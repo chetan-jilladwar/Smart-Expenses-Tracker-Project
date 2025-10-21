@@ -1,0 +1,267 @@
+/* GENERAL STYLING */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f7fa;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* APP SHELL & LAYOUT (FOR FIXED APP FEEL) */
+.app-shell {
+    max-width: 900px; 
+    margin: 0 auto;
+    background-color: var(--secondary-color);
+    min-height: 100vh;
+    padding-top: 60px; /* Space for the fixed header */
+}
+
+/* FIXED HEADER STYLING */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+    z-index: 100;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.fixed-header h1 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* MAIN CONTENT AND SCROLLING AREA */
+#app-content {
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* DASHBOARD CARDS (GRID LAYOUT) */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.card p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.chart-container {
+    grid-column: 1 / -1; 
+    position: relative;
+    height: 300px; 
+}
+
+/* BUDGETING AND PROGRESS BAR STYLING */
+.budget-card {
+    background-color: #e8f5e9; 
+    border: 2px solid #66bb6a;
+    grid-column: 1 / -1; 
+    order: -1; 
+}
+
+.budget-card h3 {
+    color: #43a047;
+}
+
+.budget-progress-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 6px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%; 
+    transition: width 0.5s ease-in-out;
+}
+
+#budget-left {
+    font-size: 2.2rem;
+    color: #388e3c; 
+}
+
+#budget-info {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* FORM STYLING (GRID LAYOUT) */
+.expense-form-section {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+#expense-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.form-control {
+    grid-column: span 1;
+}
+
+#expense-form input, #expense-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.btn {
+    grid-column: span 1;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #357abd;
+}
+
+/* TRANSACTION LIST */
+.transaction-list-section {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+#transaction-list {
+    list-style-type: none;
+    padding-top: 10px;
+}
+
+#transaction-list li {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#transaction-list li:last-child {
+    border-bottom: none;
+}
+
+.category {
+    background-color: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* LOADER */
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* MEDIA QUERY FOR MOBILE */
+@media (max-width: 600px) {
+    .app-shell {
+        padding-top: 70px; 
+    }
+    
+    .fixed-header {
+        max-width: none;
+        padding: 18px 20px;
+    }
+    
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Make form inputs stack vertically for easy tapping */
+    #expense-form {
+        grid-template-columns: 1fr;
+    }
+    .form-control, .btn {
+        grid-column: 1;
+    }
+
+    #transaction-list li {
+        font-size: 0.95rem;
+    }
+}
